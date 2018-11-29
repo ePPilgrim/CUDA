@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Third", "Third\Third.vcxproj", "{78F06749-CC54-4E24-BFBF-F98E3A186694}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		EmuDebug|x64 = EmuDebug|x64
+		EmuDebug|x86 = EmuDebug|x86
+		EmuRelease|x64 = EmuRelease|x64
+		EmuRelease|x86 = EmuRelease|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Debug|x64.ActiveCfg = Debug|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Debug|x64.Build.0 = Debug|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Debug|x86.ActiveCfg = Debug|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuDebug|x64.ActiveCfg = Debug|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuDebug|x64.Build.0 = Debug|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuDebug|x86.ActiveCfg = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuDebug|x86.Build.0 = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuRelease|x64.ActiveCfg = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuRelease|x64.Build.0 = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuRelease|x86.ActiveCfg = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.EmuRelease|x86.Build.0 = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Release|x64.ActiveCfg = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Release|x64.Build.0 = Release|x64
+		{78F06749-CC54-4E24-BFBF-F98E3A186694}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC3FBF83-2E76-4FC2-A465-B4BE1CA6E091}
+	EndGlobalSection
+EndGlobal

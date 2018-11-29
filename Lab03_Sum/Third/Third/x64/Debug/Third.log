@@ -1,0 +1,20 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Common.props(27,6): warning MSB4211: The property "VCProjectUpgraderObjectName" is being set to a value for the first time, but it was already consumed at "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.Redirect.14.props (30,5)".
+  
+  D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\Third>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\nvcc.exe" -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile   -g   -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o x64\Debug\sum.cu.obj "D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\Third\sum.cu" -clean 
+  sum.cu
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Common.props(27,6): warning MSB4211: The property "VCProjectUpgraderObjectName" is being set to a value for the first time, but it was already consumed at "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.Redirect.14.props (30,5)".
+  Compiling CUDA source file sum.cu...
+  
+  D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\Third>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\nvcc.exe" -gencode=arch=compute_30,code=\"sm_30,compute_30\" --use-local-env --cl-version 2015 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static  -g   -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o x64\Debug\sum.cu.obj "D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\Third\sum.cu" 
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab03_Sum/Third/Third/sum.cu(128): warning : variable "time" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab03_Sum/Third/Third/sum.cu(128): warning : variable "time" was declared but never referenced
+  sum.cu
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab03_Sum/Third/Third/sum.cu(274): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab03_Sum/Third/Third/sum.cu(128): warning C4101: 'time': unreferenced local variable
+  sum_gold.cpp
+  Third.vcxproj -> D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\x64\Debug\Third.exe
+  Third.vcxproj -> D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\x64\Debug\Third.pdb (Full PDB)
+  copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\cudart*.dll" "D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab03_Sum\Third\x64\Debug\"
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\cudart32_90.dll
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\cudart64_90.dll
+          2 file(s) copied.
