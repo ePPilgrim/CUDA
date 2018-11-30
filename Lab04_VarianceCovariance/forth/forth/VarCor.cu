@@ -94,6 +94,54 @@ __global__ void varcor(const float* vects, int row, int col, float* out,const in
 	}
 }
 
+__global__ void VarianceMatrix(const float* vects, int row, int col, float* out,const int slotsize) {
+	int x = blockIdx.x * blockDim.x + threadIdx.x;
+	int y = blockIdx.y * blockDim.y + threadIdx.y;
+	int shift = blockIdx.x * slotsize;
+
+	__shared__ float outmat[BlckSzY][BlckSzX];
+	__shared__ float subvects[BlckSzY][BlckSzX];
+	subvects[threadIdx.y][threadIdx.x] = vects[y * col + x];
+	__syncthreads();
+	for(int i = 0; i < blockDim.y; ++ i)
+	{
+		if ((threadIdx.y + i) < blockDim.y) {
+			outmat[threadIdx.y][threadIdx.x] = vects[y * col + x] * subvects[threadIdx.y + i][threadIdx.x];
+		}
+		__syncthreads();
+		if (threadIdx.x == 0) {
+			if ((threadIdx.y + i) < blockDim.y) {
+				out[shift + y] = outmat[threadIdx.y][0] + outmat[threadIdx.y][1] + outmat[threadIdx.y][2] +
+				outmat[threadIdx.y][3] + outmat[threadIdx.y][4] + outmat[threadIdx.y][5] + outmat[threadIdx.y][6] +
+				outmat[threadIdx.y][7] + outmat[threadIdx.y][8] + outmat[threadIdx.y][9] + outmat[threadIdx.y][10] +
+				outmat[threadIdx.y][11] + outmat[threadIdx.y][12] + outmat[threadIdx.y][13] + outmat[threadIdx.y][14] +
+				outmat[threadIdx.y][15];
+				shift += row - i;
+			}
+		}
+		__syncthreads();
+	}
+
+	for (int i = blockDim.y; i < blockDim.y * (gridDim.y - blockIdx.y); i += blockDim.y) {
+		subvects[threadIdx.y][threadIdx.x] = vects[(i + y) * col + x];
+		__syncthreads();
+		shift = blockIdx.x * slotsize;
+		for (int j = 0; j < BlckSzY; ++j) {
+			outmat[threadIdx.y][threadIdx.x] = vects[y * col + x] * subvects[threadIdx.y + j][threadIdx.x];
+			__syncthreads();
+			if (threadIdx.x == 0) {
+				out[shift + y] = outmat[threadIdx.y][0] + outmat[threadIdx.y][1] + outmat[threadIdx.y][2] +
+					outmat[threadIdx.y][3] + outmat[threadIdx.y][4] + outmat[threadIdx.y][5] + outmat[threadIdx.y][6] +
+					outmat[threadIdx.y][7] + outmat[threadIdx.y][8] + outmat[threadIdx.y][9] + outmat[threadIdx.y][10] +
+					outmat[threadIdx.y][11] + outmat[threadIdx.y][12] + outmat[threadIdx.y][13] + outmat[threadIdx.y][14] +
+					outmat[threadIdx.y][15];
+				shift = row + threadIdx.y - i - j;
+			}
+			__syncthreads();
+		}
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	//std::fstream input;
