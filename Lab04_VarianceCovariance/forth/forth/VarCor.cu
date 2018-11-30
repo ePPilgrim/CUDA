@@ -59,26 +59,37 @@ __global__ void varcor(const float* vects, int row, int col, float* out,const in
 	__shared__ float subvects[BlckSz][BlckSz];
 
 	for (int i = blockIdx.y; i < gridDim.y; ++i) {
-		int shift = blockDim.y*(i - blockIdx.y);
-		subvects[threadIdx.y][threadIdx.x] = vects[(shift + y) * col + x];
+		subvects[threadIdx.y][threadIdx.x] = vects[(blockDim.y*(i - blockIdx.y) + y) * col + x];
 		__syncthreads();
 		for (int j = 0; j < BlckSz; ++j) {
 			outmat[threadIdx.y][threadIdx.x] = 0.0f;
 			if ((threadIdx.y + j) < BlckSz) {
-				outmat[threadIdx.y][threadIdx.x] = vects[y * col + x]*subvects[threadIdx.y + j][threadIdx.x];
+				outmat[threadIdx.y][threadIdx.x] = vects[y * col + x] * subvects[threadIdx.y + j][threadIdx.x];
 			}
 			__syncthreads();
-			shift = shift + j;
-			shift = y + ((shift * (row + row + 1 - shift)) /2);
-			if (threadIdx.x == 0){
-				if( (shift < slotsize) && (shift >= 0)) {
-					out[shift + (blockIdx.x * slotsize)] = outmat[threadIdx.y][0] + outmat[threadIdx.y][1] + outmat[threadIdx.y][2] +
-						outmat[threadIdx.y][3] + outmat[threadIdx.y][4] + outmat[threadIdx.y][5] + outmat[threadIdx.y][6] +
-						outmat[threadIdx.y][7] + outmat[threadIdx.y][8] + outmat[threadIdx.y][9] + outmat[threadIdx.y][10] +
-						outmat[threadIdx.y][11] + outmat[threadIdx.y][12] + outmat[threadIdx.y][13] + outmat[threadIdx.y][14] +
-						outmat[threadIdx.y][15];
+			if (threadIdx.x == 0) {
+				if ((threadIdx.y + j) < BlckSz) {
+					int shift = blockDim.y;
+					shift *= (i - blockIdx.y);
+					shift += j;
+					shift *= (row + row + 1 - shift);
+					shift >>= 1;
+					shift += y;
+					//shift = y + shift * (((row + row + 1 - shift)) / 2);
+					//if ((shift < slotsize) && (shift >= 0)) {
+					out[shift + (blockIdx.x * slotsize)] = 16.0f;/*outmat[threadIdx.y][0] + outmat[threadIdx.y][1] + outmat[threadIdx.y][2] +
+							outmat[threadIdx.y][3] + outmat[threadIdx.y][4] + outmat[threadIdx.y][5] + outmat[threadIdx.y][6] +
+							outmat[threadIdx.y][7] + outmat[threadIdx.y][8] + outmat[threadIdx.y][9] + outmat[threadIdx.y][10] +
+							outmat[threadIdx.y][11] + outmat[threadIdx.y][12] + outmat[threadIdx.y][13] + outmat[threadIdx.y][14] +
+							outmat[threadIdx.y][15];*/
+					//}
+					//if (shift < 0) {
+					//out[0] += 1.0f;// (float)shift;
+					//}
+					//if (shift > (row + row + 1)) out[0] = (float)shift;
 				}
-			}	
+			}
+			__syncthreads();
 		}
 	}
 }
@@ -133,6 +144,15 @@ int main(int argc, char* argv[])
 	cudaMemcpy(out_vectors_h, out_vectors_d, BlocksX * slotSize * sizeof(float), cudaMemcpyDeviceToHost);
 	std::string str(cudaGetErrorString(cudaGetLastError()));
 
+	std::vector<float> vec;
+	float sum1 = 0.0f;
+	for (int i = 0; i < BlocksX * slotSize; ++i) {
+		sum1 += out_vectors_h[i];
+		vec.push_back(out_vectors_h[i]);
+	}
+
+	sum1 /= (float)Rows;
+
 	for (int i = 1; i < BlocksX; ++i) {
 		for (int j = 0; j < slotSize; ++j) {
 			out_vectors_h[j] += out_vectors_h[j + i * slotSize];
@@ -145,16 +165,18 @@ int main(int argc, char* argv[])
 	float* out_vectors_h_master =  findCovVals(vectors_h, Cols, Rows);
 
 	float minn = 0.0f;
+	int cnnnt = 0;
 	for (int i = 0; i < slotSize; ++i) {
 		float ttt = std::abs(out_vectors_h[i] - out_vectors_h_master[i]);
-		if (ttt > std::abs(minn)) minn = out_vectors_h[i] - out_vectors_h_master[i];
+		if (ttt > std::abs(minn)) minn = out_vectors_h[i] - out_vectors_h_master[i]; 
+		if (ttt > 0.000001f) cnnnt++;
 	}//*/
 
 	std::cout << "Min diff = " << minn << std::endl;
 
 	float ssum = 0.0;
 	for (int i = 0; i < slotSize; ++i) {
-		ssum += out_vectors_h_master[i];// out_vectors_h[i];
+		ssum +=  out_vectors_h[i];
 	}//*/
 
 	cudaFree(vectors_d);
