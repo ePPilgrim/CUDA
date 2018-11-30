@@ -4,12 +4,12 @@
   Compiling CUDA source file VarCor.cu...
   
   D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab04_VarianceCovariance\forth\forth>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin\nvcc.exe" -gencode=arch=compute_30,code=\"sm_30,compute_30\" --use-local-env --cl-version 2015 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static  -g   -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -o x64\Debug\VarCor.cu.obj "D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab04_VarianceCovariance\forth\forth\VarCor.cu" 
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(58): warning : variable "outmat" was set but never used
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(104): warning : variable "BlocksY" was declared but never referenced
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(106): warning : variable "flag" was declared but never referenced
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(58): warning : variable "outmat" was set but never used
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(104): warning : variable "BlocksY" was declared but never referenced
-D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(106): warning : variable "flag" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(123): warning : variable "BlocksY" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(125): warning : variable "flag" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(16): warning : variable "BlckSz" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(123): warning : variable "BlocksY" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(125): warning : variable "flag" was declared but never referenced
+D:/CUDA Samples/MyCudaLearn/stl-exercises-master/stl-exercises-master/VarianceCovariance/CUDA/Lab04_VarianceCovariance/forth/forth/VarCor.cu(16): warning : variable "BlckSz" was declared but never referenced
   VarCor.cu
   forth.vcxproj -> D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab04_VarianceCovariance\forth\x64\Debug\forth.exe
   forth.vcxproj -> D:\CUDA Samples\MyCudaLearn\stl-exercises-master\stl-exercises-master\VarianceCovariance\CUDA\Lab04_VarianceCovariance\forth\x64\Debug\forth.pdb (Full PDB)
